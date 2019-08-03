@@ -46,7 +46,7 @@ node app.js
 #### 文件说明
 
 ``` 
-test
+qiniu-upload-nodejs
     │  app.js           // 项目入口文件
     │  package.json		// 项目配置文件	
     │  readme.md        // readme文件

@@ -1,11 +1,13 @@
+![图例](http://static.bulang123.cn/2ba1c219a8a8aec5c6830eefaf5dfb74)
+
 #### 下载并安装依赖
 
 1. ```
-   git clone https://github.com/bulang/sha.git <projectName>
+   git clone https://github.com/bulang/qiniu-upload-nodejs.git
    ```
 
 2. ```
-   cd <projectName>
+   cd qiniu-upload-nodejs
    yarn
    ```
 
@@ -15,13 +17,13 @@
 
 ```json
 module.exports = {
-    accessKey:'',
-    secretKey:'',
-    expires:7200,
-    bucket:'',
-  returnBody:'{"key":"$(key)","hash":"$(etag)","fsize":$(fsize),"bucket":"$(bucket)","name":"$(x:name)"}',
-    zone:'',
-    host:''
+	accessKey:'',
+	secretKey:'',
+	expires:7200,
+	bucket:'',
+    returnBody:'{"key":"$(key)","hash":"$(etag)","fsize":$(fsize),"bucket":"$(bucket)","name":"$(x:name)"}',
+	zone:'',
+	host:''
 }
 ```
 

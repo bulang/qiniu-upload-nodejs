@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>nodejs上传图片到七牛云</title>
+  <style type="text/css">
+    body{
+      background: #999;
+    }
+    .upload-box{
+        width: 500px;
+        margin:50px auto;
+    }
+    .upload-item{
+        margin-bottom:30px;
+    }
+    .upload-item span{
+        display:inline-block;
+        width:180px;
+    }
+    #img{
+        width:100%;
+        margin-top:30px;
+    }
+  </style>
+</head>
+<body>
+    <div class="upload-box">
+        <select name="" id="up-type">
+            <option value="1">上传到本地服务器</option>
+            <option value="2">文件形式上传七牛云</option>
+            <option value="3">数据流形式上传七牛云</option>
+        </select>
+        <input id="file" type="file" name="file"/>
+        <input id="sub" type="submit" value="提交"/>
+        <div>
+            <img src="" id="img"/>
+        </div>
+    </div>
+</body>
+<script>
+  
+  var file = document.getElementById('file');
+  var sub = document.getElementById('sub');
+  var select = document.getElementById('up-type');
+  var img = document.getElementById('img');
+  var upFile = null;
+  var typeObj = {
+      1:'upload',
+      2:'fileUpload',
+      3:'streamUpload'
+  }
+  file.addEventListener('change', function(e){
+    upFile = e.target.files[0]
+  })
+  sub.onclick = function(){
+    var _data = new FormData();
+    _data.append('file', upFile);
+    var type = typeObj[select.value];
+    xhr(_data,type);
+  }
+
+  var xhr = function(formdata,type){
+    var xmlHttp = new XMLHttpRequest(); 
+    xmlHttp.open("post","http://127.0.0.1:3006/"+type, true); 
+    xmlHttp.send(formdata);
+    xmlHttp.onreadystatechange = function(){ 
+        if(xmlHttp.readyState==4){ 
+            if(xmlHttp.status==200){ 
+                var data = JSON.parse(xmlHttp.responseText);
+                img.setAttribute('src',data.data.url);
+            } 
+        }
+    }
+  }
+</script>
+</html>

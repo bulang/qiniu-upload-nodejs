@@ -15,15 +15,15 @@
 
 > 文件位于qiniu>config.js
 
-```json
+```javascript
 module.exports = {
-	accessKey:'',
-	secretKey:'',
-	expires:7200,
-	bucket:'',
+    accessKey:'',
+    secretKey:'',
+    expires:7200,
+    bucket:'',
     returnBody:'{"key":"$(key)","hash":"$(etag)","fsize":$(fsize),"bucket":"$(bucket)","name":"$(x:name)"}',
-	zone:'',
-	host:''
+    zone:'',
+    host:''
 }
 ```
 
